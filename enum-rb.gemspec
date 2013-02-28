@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'renum/version'
+require 'enum/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "renum"
-  gem.version       = Renum::VERSION
+  gem.name          = "enum-rb"
+  gem.version       = Enum::VERSION
   gem.authors       = ["jake"]
   gem.email         = ["pablo_honey@me.com"]
   gem.description   = %q{Ruby Enum storage.}
