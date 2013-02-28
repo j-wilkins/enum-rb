@@ -3,17 +3,6 @@ require 'redis/namespace'
 class Enum
   class RedisStore
 
-    def self.load_yaml(file)
-      require 'yaml'
-      load_hash(YAML.load_file(file))
-    end
-
-    def self.load_hash(hash)
-      hash.each_pair do |key, value|
-        Setter.set_value(key, value)
-      end
-    end
-
     attr_reader :connection
 
     def initialize(redis = nil)
@@ -26,6 +15,17 @@ class Enum
 
     def set_value(key, value)
       Setter.set_value(connection, key, value)
+    end
+
+    def load_yaml(file)
+      require 'yaml'
+      load_hash(YAML.load_file(file))
+    end
+
+    def load_hash(hash)
+      hash.each_pair do |key, value|
+        Setter.set_value(connection, key, value)
+      end
     end
 
     module Setter

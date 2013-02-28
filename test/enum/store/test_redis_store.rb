@@ -14,6 +14,13 @@ class TestEnumStoreRedisStore < Test::Unit::TestCase
     @store.connection.flushdb
   end
 
+  def test_load_hash
+    @store.load_hash({'foo' => 'bar', 'baz' => 'bat'})
+
+    assert_equal 'bar', @store.get_value('foo')
+    assert_equal 'bat', @store.get_value('baz')
+  end
+
   def test_sets_string_values
     @store.set_value('test', 'hat')
 
